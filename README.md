@@ -48,7 +48,7 @@ Please note that currently we have only pushed the image of 20 Frames model, If 
 
 #### Step 5: Copy Models
 
-`Copy your trained model to the models folder i.e Django Application/models/`
+`Copy your trained model to the models folder i.e /models`
 
 - You can download our trained models from [Google Drive](https://drive.google.com/drive/folders/1UX8jXUXyEjhLLZ38tcgOwGsZ6XFSLDJ-?usp=sharing)
 
