@@ -3,7 +3,9 @@
 {%block content%}
 {%if no_faces%}
 <div class="container">
-  <div class="logo text-center mb-3"><img src="{% static 'images/logo1.png'%}" alt="Logo" ></div>
+  <div class="text-center mb-3">
+    <p class="text-dark display-3 font-weight-bold">Deepfake Detection</p>
+  </div>
   <hr />
   <div class="alert alert-danger">
     No faces detected. Cannot process the video.
@@ -11,7 +13,9 @@
 </div>
 {%else%}
 <div class="container">
-  <div class="logo text-center mb-3"><img src="{% static 'images/logo1.png'%}" alt="Logo" ></div>
+  <div class="text-center mb-3">
+    <p class="text-dark display-3 font-weight-bold">Deepfake Detection</p>
+  </div>
   <hr />
 
   <h3>Frames Split</h3>
@@ -39,9 +43,10 @@
       <img src="{% static 'images/thumpup.png'%}" alt="real" height="100px" width=auto>
       {%else%}
       <h4 class="mx-auto">Result: <span style="color:red">{{output}}</span>
-        <img src="{% static 'images/thumpdown.png'%}" alt="fake" height="100px" width=auto >
-      {%endif%}
+        <img src="{% static 'images/thumpdown.png'%}" alt="fake" height="100px" width=auto>
+        {%endif%}
   </div>
+</div>
 <!--
   <h3>Heat Maps</h3>
   <div id="heatmap_images" class="col-12 mb-4 ">
@@ -60,9 +65,9 @@
     const video = document.getElementById("predict-media");
 
     Promise.all([
-    faceapi.nets.ssdMobilenetv1.loadFromUri('/static/json'),
+      faceapi.nets.ssdMobilenetv1.loadFromUri('/static/json'),
       faceapi.nets.tinyFaceDetector.loadFromUri("/static/json")
-      
+
     ])
 
     var detectionTimeout;
@@ -88,11 +93,11 @@
           console.log(resizedDetections[i].box);
           var result = '{{output}}';
           var confidence = '{{confidence}}';
-          var drawOptions = {label: result.concat("  " , confidence , "%")};
-          if (result == 'REAL'){
+          var drawOptions = { label: result.concat("  ", confidence, "%") };
+          if (result == 'REAL') {
             drawOptions["boxColor"] = "#0f0";
           }
-          else if (result == 'FAKE'){
+          else if (result == 'FAKE') {
             drawOptions["boxColor"] = "#f00";
           }
           var box = { x: resizedDetections[i].box.x, y: resizedDetections[i].box.y, height: 100, width: 100 };
